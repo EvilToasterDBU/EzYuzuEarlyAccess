@@ -1,7 +1,7 @@
-![GitHub Release](https://img.shields.io/github/v/release/amakvana/EzYuzu?style=for-the-badge&logo=appveyor)
-![GitHub license](https://img.shields.io/github/license/amakvana/EzYuzu?style=for-the-badge&logo=appveyor)
-![GitHub repo size](https://img.shields.io/github/repo-size/amakvana/EzYuzu?style=for-the-badge&logo=appveyor)
-![GitHub all releases](https://img.shields.io/github/downloads/amakvana/EzYuzu/total?style=for-the-badge&logo=appveyor)
+![GitHub Release](https://img.shields.io/github/v/release/EvilToasterDBU/EzYuzuEarlyAccess?style=for-the-badge&logo=appveyor)
+![GitHub license](https://img.shields.io/github/license/EvilToasterDBU/EzYuzuEarlyAccess?style=for-the-badge&logo=appveyor)
+![GitHub repo size](https://img.shields.io/github/repo-size/EvilToasterDBU/EzYuzuEarlyAccess?style=for-the-badge&logo=appveyor)
+![GitHub all releases](https://img.shields.io/github/downloads/EvilToasterDBU/EzYuzuEarlyAccess/total?style=for-the-badge&logo=appveyor)
 
 # EzYuzu
 
@@ -40,7 +40,7 @@ Perfect for those who run Yuzu off an External HDD or through (but not limited t
 - `Dependencies` can be included within `Update Yuzu` by checking the option within `Options` > `General` > `Update Yuzu` > `Reinstall Visual C++`
 - It shouldn't overwrite configs unless `New Install` is displayed. However, backup beforehand.
 - Temp files are stored within `TempUpdate` and are deleted upon completion.
-- [GUIDE](https://github.com/amakvana/EzYuzu/blob/master/GUIDE.md) for detailed instructions
+- [GUIDE](https://github.com/EvilToasterDBU/EzYuzuEarlyAccess/blob/master/GUIDE.md) for detailed instructions
 
 ## Downloads
 
