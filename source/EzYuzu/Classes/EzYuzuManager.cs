@@ -367,7 +367,7 @@ namespace EzYuzu
                 UpdateProgress(100, "Done");
             };
             client.DownloadProgressChanged += (s, e) => UpdateProgress(e.ProgressPercentage, "Downloading Prerequisites ...");
-            await client.DownloadFileTaskAsync("https://github.com/amakvana/EzYuzu/raw/master/assets/7z/22.01/7z.zip", sevenZLocation);
+            await client.DownloadFileTaskAsync("https://github.com/EvilToasterDBU/EzYuzuEarlyAccess/raw/master/assets/7z/22.01/7z.zip", sevenZLocation);
         }
 
         /// <summary>
