@@ -24,7 +24,7 @@ namespace EzYuzu
             try
             {
                 using (var client = new WebClient())
-                using (var stream = client.OpenRead("https://raw.githubusercontent.com/amakvana/EzYuzu/master/version"))
+                using (var stream = client.OpenRead("https://raw.githubusercontent.com/EvilToasterDBU/EzYuzuEarlyAccess/master/version"))
                 using (var reader = new StreamReader(stream))
                 {
                     int i = 1;
