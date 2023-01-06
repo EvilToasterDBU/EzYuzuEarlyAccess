@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,7 +14,7 @@ namespace EzYuzu
 {
     public class EzYuzuManager
     {
-        private const string BaseYuzuRepoUrl = "https://github.com/yuzu-emu/yuzu-mainline/releases/latest";
+        private const string BaseYuzuRepoUrl = "https://github.com/pineappleEA/pineapple-src/releases/latest";
         private const string Quote = "\"";
         private string _sevenZipExePath = "";
 
@@ -103,23 +103,7 @@ namespace EzYuzu
         public async Task ProcessYuzuNewInstallationAsync()
         {
             // clean out the old yuzu directory & configs
-            var configDirs = new List<string>()
-            {
-                { $@"{YuzuDirectoryPath}\User\config" },
-                { $@"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}\yuzu\config" }
-            };
-            foreach (string dir in configDirs)
-            {
-                if (Directory.Exists(dir))
-                {
-                    Directory.Delete(dir, true);
-                }
-            }
-
-            // setup User folders
-            Directory.CreateDirectory($@"{YuzuDirectoryPath}\User");
-            Directory.CreateDirectory($@"{YuzuDirectoryPath}\User\keys");
-            Directory.CreateDirectory($@"{YuzuDirectoryPath}\User\config");
+          
             
             // install latest vc++, yuzu and pull gpu configs
             await DownloadInstallVisualCppRedistAsync();
@@ -141,26 +125,26 @@ namespace EzYuzu
             using var client = new WebClient();
 
             // fetch latest Yuzu release 
-            string repo = GetRedirectedUrl("https://github.com/yuzu-emu/yuzu-mainline/releases/latest");
+            string repo = GetRedirectedUrl("https://github.com/pineappleEA/pineapple-src/releases/latest");
 
             // 21/09/22 - github now uses expanded_assets in the url to show the assets. 
             // we grab the redirected url from /latest/
             // parse the last / as it contains the version url then prepend the word "expanded_assets" to it 
             // join back onto "https://github.com/yuzu-emu/yuzu-mainline/releases"
             string mainLineVersion = repo.Substring(repo.LastIndexOf('/') + 1).Trim();
-            repo = $@"https://github.com/yuzu-emu/yuzu-mainline/releases/expanded_assets/{mainLineVersion}";
+            repo = $@"https://github.com/pineappleEA/pineapple-src/releases/expanded_assets/{mainLineVersion}";
 
             // get html from new url structure
             string repoHtml = client.DownloadString(repo);
             string latestYuzu = "https://github.com";
             int version = FetchLatestYuzuVersionNumber();
-            Regex r = new Regex(@"(?:\/yuzu-emu\/yuzu-mainline\/releases\/download\/[^""]+)");
+            Regex r = new Regex(@"(?:\/pineappleEA\/pineapple-src\/releases\/download\/[^""]+)");
             foreach (Match m in r.Matches(repoHtml))
             {
                 string url = m.Value.Trim();
 
                 // since 7z is used, prefer the 7z url - faster 
-                if (url.EndsWith(".7z", StringComparison.Ordinal))
+                if (url.EndsWith(".zip", StringComparison.Ordinal))
                 {
                     latestYuzu += url;
                 }
@@ -186,7 +170,7 @@ namespace EzYuzu
                 }
 
                 // move archive contents from yuzu-windows-msvc into YuzuDirectoryPath
-                DirectoryUtilities.Copy($@"{YuzuDirectoryPath}\yuzu-windows-msvc", YuzuDirectoryPath, true);
+                DirectoryUtilities.Copy($@"{YuzuDirectoryPath}\yuzu-windows-msvc-early-access", YuzuDirectoryPath, true);
 
                 // update version number 
                 using (var f = new FileStream($@"{YuzuDirectoryPath}\version", FileMode.OpenOrCreate))
@@ -260,11 +244,7 @@ namespace EzYuzu
             {
                 UpdateProgress(100, "Done");
             };
-            client.DownloadProgressChanged += (s, e) => UpdateProgress(e.ProgressPercentage, "Downloading Optimised GPU Config ...");
 
-            string gpuConfigUrl = "https://github.com/amakvana/EzYuzu/raw/master/configs/";
-            gpuConfigUrl += useOpenGL ? "opengl.ini" : "vulkan.ini";
-            await client.DownloadFileTaskAsync(new Uri(gpuConfigUrl), $@"{YuzuDirectoryPath}\User\config\qt-config.ini");
         }
 
         /// <summary>
@@ -296,7 +276,7 @@ namespace EzYuzu
         /// </summary>
         private void CleanUpDirectories()
         {
-            Directory.Delete($@"{YuzuDirectoryPath}\yuzu-windows-msvc", true);
+            Directory.Delete($@"{YuzuDirectoryPath}\yuzu-windows-msvc-early-access", true);
             Directory.Delete(TempUpdateDirectoryPath, true);
             Directory.EnumerateFiles(YuzuDirectoryPath, "*.xz").ToList().ForEach(item => File.Delete(item));
         }
