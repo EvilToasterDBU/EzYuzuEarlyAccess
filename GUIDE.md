@@ -7,7 +7,7 @@
 
 ## Methodology
 
-- Reads https://github.com/yuzu-emu/yuzu-mainline/releases/latest
+- Reads https://github.com/pineappleEA/pineapple-src/releases/latest
 - Fetches the latest .zip URL
 - Downloads & extracts it into your Yuzu root folder
 
