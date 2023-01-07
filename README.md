@@ -3,11 +3,10 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/EvilToasterDBU/EzYuzuEarlyAccess?style=for-the-badge&logo=appveyor)
 ![GitHub all releases](https://img.shields.io/github/downloads/EvilToasterDBU/EzYuzuEarlyAccess/total?style=for-the-badge&logo=appveyor)
 
-# EzYuzu
+# EzYuzu Early Access
 
-A Portable Yuzu Updater for Standalone versions of Yuzu.
+A Portable Yuzu Updater for Early Access versions of Yuzu.
 
-Perfect for those who run Yuzu off an External HDD or through (but not limited to) frontends such as LaunchBox, Steam, EmulationStation and HyperSpin.
 
 ![EzYuzu v1.4.0.0](images/ezyuzu_1400.png)
 
@@ -25,8 +24,8 @@ Perfect for those who run Yuzu off an External HDD or through (but not limited t
 
 ### Methodology
 
-- Reads https://github.com/yuzu-emu/yuzu-mainline/releases/latest
-- Fetches the latest .7z archive URL
+- Reads https://github.com/pineappleEA/pineapple-src/releases/latest
+- Fetches the latest .zip archive URL
 - Downloads & extracts it into your Yuzu Root Folder
 
 ### Usage
@@ -44,7 +43,7 @@ Perfect for those who run Yuzu off an External HDD or through (but not limited t
 
 ## Downloads
 
-https://github.com/amakvana/EzYuzu/releases/latest
+https://github.com/EvilToasterDBU/EzYuzuEarlyAccess/releases/latest
 
 Requires:
 - Latest [7-Zip](https://www.7-zip.org/a/7z2201-x64.msi) installed.
